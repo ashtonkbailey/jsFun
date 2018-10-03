@@ -203,20 +203,20 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = cakes.reduce((acc, currCake) => {
-        acc = currCake.forEach((cake) => {
-            let toppings = cake.toppings
-            if (!toppings) {
-                acc.push(cake.toppings)
-            }
-        })
+      const result = cakes.reduce((toppings, currCake) => {
 
-        return acc;
-    }, []);
+        currCake.toppings.forEach((topping) => {
+          if (!toppings.includes(topping)) {
+            toppings.push(topping)
+          }
+        });
+
+        return toppings;
+     }, []);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I am given an array of objects and need to return an array of a different length. I need to get into each object and pull out the values of its toppings array and push them into the new array without duplicates. I used a reduce() to make the new array and forEach() to go over each object. In the forEach() I check my accumulator array for each value in the object's toppings array, and add the value if it doesn't exist in the acc.
   },
 
   groceryList() {
@@ -230,11 +230,23 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((groceryList, cake) => {
+  cake.toppings.forEach((topping) => {
+    
+        if (!groceryList[topping]) {
+          groceryList[topping] = 1;
+        } else {
+          groceryList[topping] ++;
+        }
+      })
+      
+      return groceryList; 
+    }, {});
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I am given an array of objects and need to return an object. I use a reduce() to create the object and a forEach() to get to the toppings I need for the object. In the forEach() I check my object for the toppings. If it doesn't exist then I add it and set it to one. If it does exist I increment the number by one.
   },
 
   stockPerCake() {
@@ -246,22 +258,32 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map((currCake) => {
+      let cakeFlavors = { flavor: currCake.cakeFlavor, inStock: currCake.inStock }
+
+      return cakeFlavors;
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I am given an array of objects and I need to return an array of objects of the same length. I use a map() to retrieve the properties of each cake object that I want and return only those for my new array.
   },
 
   totalInventory() {
     // Return the total amout of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((totalCakes, currCake) => {
+      totalCakes = totalCakes + currCake.inStock;
+      
+      return totalCakes;
+    }, 0)
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I am given an array of objects and need to return a single number value. I use a reduce to create a total value for my return and add each inStock value from each object to the total value.
   },
 
   onlyInStock() {
@@ -288,6 +310,8 @@ const cakePrompts = {
     const result = cakes.filter((currCake) => {
         return currCake.inStock;
     });
+
+    return result;
 
     //Annotation:
     //I am given an array of cakes and I want a subset of that array. I'm using filter() in which the callback will return only the cakes that have a value for inStock.
