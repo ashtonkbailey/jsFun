@@ -16,11 +16,23 @@ const turingPrompts = {
     //  { name: 'Robbie', studentCount: 18 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = instructors.map((instructor) => {
+        let newInstructor = { name: instructor.name };
+
+        let instructorsCohort = cohorts.find((cohort) => {
+          return instructor.module === cohort.module;
+        });
+
+        let studentCount = instructorsCohort.studentCount;
+
+        newInstructor.studentCount = studentCount;
+
+        return newInstructor;
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    //I am given two arrays and want to return an array of the same length of the first given array. I use map() to create the array and within it use a find() to correlate the data between the two givens. I then assign the data needed from the second given to my new array.
   },
 
   studentsPerInstructor() {
@@ -190,7 +202,16 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, currCake) => {
+        acc = currCake.forEach((cake) => {
+            let toppings = cake.toppings
+            if (!toppings) {
+                acc.push(cake.toppings)
+            }
+        })
+
+        return acc;
+    }, []);
     return result;
 
     // Annotation:
@@ -262,6 +283,13 @@ const cakePrompts = {
     // },
     // ..etc
     // ]
+
+    const result = cakes.filter((currCake) => {
+        return currCake.inStock;
+    });
+
+    //Annotation:
+    //I am given an array of cakes and I want a subset of that array. I'm using filter() in which the callback will return only the cakes that have a value for inStock.
   }
 };
 
