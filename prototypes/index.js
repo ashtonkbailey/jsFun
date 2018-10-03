@@ -112,11 +112,16 @@ const modPrompts = {
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mods.map((mod) => {
+        let modsArray = { mod: mod.mod, studentsPerInstructor: (mod.students/mod.instructors) };
+
+        return modsArray;
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I am given an array of objects and I want to return an array of the same length. I use map() to create the new array and a new object per element of the original array. 
   }
 };
 
@@ -147,11 +152,16 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
-    return result;
+        const result = classrooms.filter((room) => {
+            if (room.program === 'FE') {
+                return room;
+            }
+        });
+    
+        return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I am given an array of objects and need to return an array of a different length. I use a filter() to return only the objects whose program value match the criteria for the new array.
   },
 
   totalCapacities() {
@@ -162,21 +172,39 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let totalFeCap = 0;
+    let totalBeCap = 0;
+
+    const result = classrooms.reduce((roomCaps, room) => {
+      
+      if (room.program === 'FE') {
+        totalFeCap = totalFeCap + room.capacity;
+      } else if (room.program === 'BE') {
+        totalBeCap = totalBeCap + room.capacity;
+      }
+
+      roomCaps = { feCapacity: totalFeCap, beCapacity: totalBeCap};
+
+      return roomCaps;
+    }, {});
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I am given an array and asked to return a single object. I use reduce() to create the object and assign properties which values are calculated based on each original object's value.
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a, b) => {
+        return a.capacity - b.capacity;
+    });
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I am given an array of objects and asked to return a sorted array based on the value of the capacity property of each object. I use sort() with a compare function to specify how I want the array sorted.
   }
 };
 
@@ -346,11 +374,21 @@ const piePrompts = {
     //   sugar: 100
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let ingredientsNeeded = Object.keys(pie.ingredients);
+   
+    const result = ingredientsNeeded.reduce((acc, currIngredient) => {
+      let piesNeeded = pie.desiredInventoryCount - pie.inventoryCount;
+      let ingredientTotal = pie.ingredients[currIngredient] * piesNeeded;
+
+      acc[currIngredient] = ingredientTotal;
+
+      return acc;
+    }, {});
+
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // I am given an object and need to return an object. I use Object.keys() to access the keys needed for my return and use a reduce() to create the return. I use the keys found to assign the values needed for my new object.
   }
 };
 
