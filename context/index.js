@@ -16,11 +16,11 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'window';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // `this` refers to the window because the method fly() is written as an arrow function. The context of `this` is set when arrow functions are declared, and because it is declared globally, the context is global.
   },
 
   exerciseB() {
@@ -30,11 +30,11 @@ const context = {
     }
     
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'fn';
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // `this` refers to the fn() function itself because the context is set when ES5 functions are invoked. In that case, `this` is bound to the object of fn.
   },
 
   exerciseC() {
@@ -49,11 +49,11 @@ const context = {
     el.addEventListener("click", car.getInfo);
 
     // What is the value of `this` when a user clicks on our element and car.getInfo() is triggered?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'car';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // `this` refers to the car object because getInfo() is an ES5 function. The context for `this` is set when ES5 functions are invoked.
   },
 
   exerciseD() {
@@ -70,11 +70,11 @@ const context = {
 
 
     // What is the value of `this` when we call dog.getBreed()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'dog';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // `this` is set within the context of the object on which ES5 functions are called. In this case the object is dog.
   },
 
   exerciseE() {
@@ -86,11 +86,11 @@ const context = {
 
 
     // What is the value of `this` when we call fn()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'window';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // `this` is set on the window because fn() is an arrow function. Arrow functions set `this` to their surrounding context, which is the window.
   },
 
   exerciseF() {
@@ -109,11 +109,11 @@ const context = {
     const storm = new Hero('Ororo', 'weather control', true);
 
     // What is the value of `this` when we call storm.identifyHero()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'storm';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // identifyHero() is a method on the storm object. The context of `this` is set on the object which the method is called.
   },
 
   exerciseG() {
@@ -137,11 +137,11 @@ const context = {
 
 
     // What is the value of `this` when we call monopoly.restart()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'monopoly';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // The context of `this` is set on an object when a method is called on it. restart() was called upon monopoly, so `this` refers to the monopoly object.
   },
 
   exerciseH() {
@@ -155,11 +155,11 @@ const context = {
     obj.method();
 
     // What is the value of `this` when we call obj.arrowFunction()?
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'obj';
     return result;
 
     // Annotation: 
-    // Write your annotation here as a comment
+    // The 
   },
 
   exerciseI() {  

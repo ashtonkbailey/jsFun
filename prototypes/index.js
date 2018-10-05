@@ -418,7 +418,21 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = clubs.reduce((acc, currClub) => {
+      currClub.members.forEach((member) => {
+        let memberName = member;
+        let clubsArr = [];
+        acc[memberName] = clubsArr;
+        clubsArr = clubs.reduce((acc, club) => {
+          if (club.members.includes(member)) {
+            clubsArr.push(club.club)
+          }
+          return acc;
+        }, [])
+      })
+
+      return acc;
+    }, {})
     return result;
 
     // Annotation:
