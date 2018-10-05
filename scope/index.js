@@ -251,12 +251,12 @@ const scope = {
       { 'D': 9 },
       { 'E': 10 },
       { 'B': 10 },
-      { 'C': 6 }
+      { 'C': 4 }
       ];
     return result;
 
     // Annotation:
-    // We declare a global variable called 'num' and assign it to '6'. Then we declare a function called 'fn1'. Next we decare a function called 'fn2'. Then we invoke 'fn1'. Within 'fn1' we declare a functional variable named 'num' and assign it to '4'. We log the functional variable as '4'. We check the conditional and find it to evaluate to 'true', so we declare a block scoped variable named 'num' and assign it to '9'. We declare another block scope variable. Then in that conditional we invoke 'fn2' and pass in the block scope variable 'num'. Within 'fn2', we log the value of 'num' as '9'. Then we reassign the variable 'num' to 'num + 1'. Next we log the value of 'num' as '10'. The funciton 'fn2' is resolved, so back inside the conditional we assign the value of 'newNum' to the value of 'num'. We log the variable 'newNum' as '10'. Then we create a global variable called 'newNum' and assign it to the value of the global variable 'num'. We log the value of as '6'. The function 'fn1' is resolved. 
+    // We declare a global variable called 'num' and assign it to '6'. Then we declare a function called 'fn1'. Next we decare a function called 'fn2'. Then we invoke 'fn1'. Within 'fn1' we declare a functional variable named 'num' and assign it to '4'. We log the functional variable as '4'. We check the conditional and find it to evaluate to 'true', so we declare a block scoped variable named 'num' and assign it to '9'. We declare another block scope variable. Then in that conditional we invoke 'fn2' and pass in the block scope variable 'num'. Within 'fn2', we log the value of 'num' as '9'. Then we reassign the variable 'num' to 'num + 1'. Next we log the value of 'num' as '10'. The funciton 'fn2' is resolved, so back inside the conditional we assign the value of 'newNum' to the value of 'num'. We log the variable 'newNum' as '10'. Then we create a global variable called 'newNum' and assign it to the value of the functional variable 'num'. We log the value of as '4'. The function 'fn1' is resolved. 
   },
 
   exerciseI() {
@@ -287,9 +287,7 @@ const scope = {
 
   exerciseJ() {
     let sandwich = 'ketchup sandwich';
-
     // Log A: sandwich
-
     const addChipotle = () => {
       // Log B: toppings
       var toppings = 'chipotle sauce';
@@ -297,24 +295,18 @@ const scope = {
       if (toppings === 'chipotle sauce') { 
         sandwich = 'not a mediocre sandwich';
       }
-
       // Log C: sandwich
     }
-
     const addCheese = () => {
       let cheeseTopping = 'gouda';
       // Log D: cheeseTopping
-
       const shesTheManReference = () => {
         amandaBynes = "National Treasure"
       }
-
       shesTheManReference();
     }
-
     cheeseTopping = 'kraft';
     addCheese();
-
     addChipotle();
     // Log E: sandwich
     // Log F: amandaBynes
@@ -335,9 +327,7 @@ const scope = {
         }
         // Log A: num
     }
-
     foo();
-
     // Log B: num
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
@@ -359,17 +349,12 @@ const scope = {
         if (grade === 95) {
           let grade = 97;
         }
-
         // Log A: grade
       }
-
       addPoints();
-
       // Log B: grade
     }
-
     losePoints();
-
     // Log C: grade
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
@@ -387,15 +372,12 @@ const scope = {
       num = 6;
       // Log B: num
     }
-
     function second() {
       // Log C: num
       let num = 7;
     }
-
     first();
     second();
-
     // Log D: num
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
@@ -433,12 +415,12 @@ const scope = {
       { 'B': 'Pam' },
       { 'C': 'Louisa' },
       { 'D': 'Louisa' },
-      { 'F': 'Pam' }
+      { 'F': 'Louisa' }
       ]
     return result;
 
     // Annotation:
-    // At line 430 we declare a global variable named 'instructor' and assign it to 'Pam'. Then we declare a function named 'changeInstructor'. Next we move down to line 447 and log the 'instructor' as 'Pam'. At the next line we invoke the function 'changeInstructor'. In that function we log 'instructor', which does not exist in the local scope, so we look to the global scope to find the value of 'Pam'. Next we run through the conditional. We check to see if 'instructor' is equal to 'Brittany'; it is not, so we declare a block variable named 'instructor' and assign it to 'Brittany'. Then we log 'instructor' which is globally defined as 'Pam'. The next line we declare a function named 'rename'. We then invoke 'rename' and create a functional variable of 'instructor' and assign it to 'Louisa'. Then we log 'instructor' as 'Louisa'. The 'rename' function is resolved and we log the functional 'instructor' variable as 'Louisa'. The 'changeInstructor' function is resolved and we log the global variable 'instructor' as 'Pam.'
+    // At line 430 we declare a global variable named 'instructor' and assign it to 'Pam'. Then we declare a function named 'changeInstructor'. Next we move down to line 447 and log the 'instructor' as 'Pam'. At the next line we invoke the function 'changeInstructor'. In that function we log 'instructor', which does not exist in the local scope, so we look to the global scope to find the value of 'Pam'. Next we run through the conditional. We check to see if 'instructor' is equal to 'Brittany'; it is not, so we declare a block variable named 'instructor' and assign it to 'Brittany'. Then we log 'instructor' which is globally defined as 'Pam'. The next line we declare a function named 'rename'. We then invoke 'rename' and create a functional variable of 'instructor' and assign it to 'Louisa'. Then we log 'instructor' as 'Louisa'. The 'rename' function is resolved and we log the functional 'instructor' variable as 'Louisa'. The 'changeInstructor' function is resolved and we log the global variable 'instructor' as 'Louisa.'
   },
 
   exerciseO() {

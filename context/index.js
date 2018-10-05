@@ -16,7 +16,7 @@ const context = {
 
 
     // What is the value of `this` when we call ship.fly()?
-    const result = 'window';
+    const result = 'global window object';
     return result;
 
     // Annotation:
@@ -86,7 +86,7 @@ const context = {
 
 
     // What is the value of `this` when we call fn()?
-    const result = 'window';
+    const result = 'global window object';
     return result;
 
     // Annotation: 
@@ -109,7 +109,7 @@ const context = {
     const storm = new Hero('Ororo', 'weather control', true);
 
     // What is the value of `this` when we call storm.identifyHero()?
-    const result = 'storm';
+    const result = 'instance of Hero';
     return result;
 
     // Annotation: 
